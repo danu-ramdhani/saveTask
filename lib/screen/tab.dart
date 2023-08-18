@@ -66,15 +66,18 @@ class _TabScreenState extends State<TabScreen> {
   }
 
   void _selectAll() async {
+    FirebaseFirestore.instance.settings =
+        const Settings(persistenceEnabled: true);
+
     QuerySnapshot querySnapshot = await _products.get();
 
-    WriteBatch batch = FirebaseFirestore.instance.batch();
+    List<Future<void>> updateTasks = [];
 
-    for (var doc in querySnapshot.docs) {
-      batch.update(doc.reference, {'isSelected': true});
+    for (QueryDocumentSnapshot docSnapshot in querySnapshot.docs) {
+      updateTasks.add(docSnapshot.reference.update({'isSelected': true}));
     }
 
-    await batch.commit();
+    await Future.wait(updateTasks);
   }
 
   void _deleteAll() async {

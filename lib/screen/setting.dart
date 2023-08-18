@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:to_do_list_crud/main.dart';
 
 import '../provider/dark_mode.dart';
 
@@ -35,6 +37,13 @@ class _SettingScreenState extends State<SettingScreen> {
           const Divider(height: 0),
         ],
       ),
+      bottomNavigationBar: isAdLoaded
+          ? SizedBox(
+              height: bannerAd.size.height.toDouble(),
+              width: bannerAd.size.width.toDouble(),
+              child: AdWidget(ad: bannerAd),
+            )
+          : const SizedBox(),
     );
   }
 }
