@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'package:to_do_list_crud/screen/auth.dart';
+import 'package:save_task/screen/auth.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});

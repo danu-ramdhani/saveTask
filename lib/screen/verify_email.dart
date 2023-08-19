@@ -4,8 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
-import 'package:to_do_list_crud/screen/tab.dart';
-import 'package:to_do_list_crud/screen/auth.dart';
+import 'package:save_task/screen/tab.dart';
+import 'package:save_task/screen/auth.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
   const VerifyEmailScreen({super.key});

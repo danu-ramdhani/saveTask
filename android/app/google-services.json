@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:192077335456:android:797fb9ccd9daf8dca872c5",
         "android_client_info": {
-          "package_name": "com.example.to_do_list_crud"
+          "package_name": "com.example.save_task"
         }
       },
       "oauth_client": [

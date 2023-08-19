@@ -1,6 +1,6 @@
 {
-    "name": "to_do_list_crud",
-    "short_name": "to_do_list_crud",
+    "name": "save_task",
+    "short_name": "save_task",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:to_do_list_crud/screen/account.dart';
-import 'package:to_do_list_crud/screen/setting.dart';
+import 'package:save_task/screen/account.dart';
+import 'package:save_task/screen/setting.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});

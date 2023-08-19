@@ -6,10 +6,10 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
-import 'package:to_do_list_crud/provider/dark_mode.dart';
-import 'package:to_do_list_crud/screen/verify_email.dart';
-import 'package:to_do_list_crud/screen/auth.dart';
-import 'package:to_do_list_crud/color_theme.dart';
+import 'package:save_task/provider/dark_mode.dart';
+import 'package:save_task/screen/verify_email.dart';
+import 'package:save_task/screen/auth.dart';
+import 'package:save_task/color_theme.dart';
 
 void main() async {
   var devices = ['AB217354ECF3C472C14B660D32B8BA43'];
@@ -67,7 +67,6 @@ class _MyAppState extends State<MyApp> {
         },
         onAdFailedToLoad: (ad, error) {
           ad.dispose();
-          print(error);
         },
       ),
       request: const AdRequest(),
