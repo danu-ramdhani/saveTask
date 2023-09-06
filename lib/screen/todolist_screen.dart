@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:save_task/screen/auth.dart';
 
 import 'package:save_task/widgets/edit_todo.dart';
+import 'package:save_task/widgets/no_data_content.dart';
 
 class TodolistScreen extends StatefulWidget {
   const TodolistScreen({
@@ -132,37 +133,15 @@ class _TodolistScreenState extends State<TodolistScreen> {
             );
           }
           if (snapshot.data!.docs.isEmpty) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/todo.png',
-                    height: 250,
-                    width: 250,
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-                  Text(
-                    'Your Todo is empty',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall!
-                        .copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Try add by prees plus button below',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(0.8),
-                        ),
-                  ),
-                ],
+            return NoDataContent(
+              image: Image.asset(
+                'assets/images/todo.png',
+                height: 250,
+                width: 250,
+                color: Theme.of(context).colorScheme.onBackground,
               ),
+              firstText: 'Your Todo is empty',
+              secondText: 'Try add by prees plus button below',
             );
           } else {
             return ListView.builder(

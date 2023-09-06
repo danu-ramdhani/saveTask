@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:save_task/screen/auth.dart';
+import 'package:save_task/widgets/no_data_content.dart';
 
 class DoneScreen extends StatefulWidget {
   const DoneScreen({
@@ -90,37 +91,15 @@ class _DoneScreenState extends State<DoneScreen> {
         }
 
         if (snapshot.data!.docs.isEmpty) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/images/done.png',
-                  height: 260,
-                  width: 260,
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
-                Text(
-                  'You dont have todo list done',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Add your todo list and prees check button',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withOpacity(0.8),
-                      ),
-                ),
-              ],
+          return NoDataContent(
+            image: Image.asset(
+              'assets/images/done.png',
+              height: 260,
+              width: 260,
+              color: Theme.of(context).colorScheme.onBackground,
             ),
+            firstText: 'You dont have todo list done',
+            secondText: 'Add your todo list and prees check button',
           );
         } else {
           return ListView.builder(
