@@ -63,6 +63,12 @@ class _AddTodoInTitleState extends State<AddTodoInTitle> {
   }
 
   @override
+  void dispose() {
+    todoTx.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),

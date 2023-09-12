@@ -75,6 +75,13 @@ class _AddTodoScreenState extends State<AddTitleTodo> {
   }
 
   @override
+  void dispose() {
+    todoTx.dispose();
+    titleTx.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
