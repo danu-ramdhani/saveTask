@@ -17,11 +17,19 @@ class _TabScreenState extends State<TabScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        titleTextStyle: Theme.of(context).textTheme.titleMedium!.copyWith(),
-        foregroundColor: Theme.of(context).colorScheme.onBackground,
-        title: const Text('TO DO LIST'),
+        titleTextStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+        title: const Text('SAVE TASK'),
+        leading: Container(
+          margin: const EdgeInsets.only(left: 16),
+          child: Image.asset(
+            'assets/images/icon.png',
+          ),
+        ),
+        titleSpacing: 8,
         surfaceTintColor: Theme.of(context).colorScheme.primary,
-        // forceMaterialTransparency: true,
       ),
       body: const TodolistScreen(),
       floatingActionButton: const FloatingAddButton(),
