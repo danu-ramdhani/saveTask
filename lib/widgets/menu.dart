@@ -36,6 +36,11 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
+      offset: const Offset(0, -120),
+      icon: const FaIcon(
+        FontAwesomeIcons.bars,
+        color: Colors.white,
+      ),
       surfaceTintColor: Theme.of(context).colorScheme.background,
       itemBuilder: (context) {
         return [

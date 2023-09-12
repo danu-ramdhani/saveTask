@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:save_task/widgets/add_todo.dart';
+import 'package:save_task/show_modal_bottom_sheet/add_title_todo.dart';
 
 class FloatingAddButton extends StatefulWidget {
-  const FloatingAddButton({super.key, required this.isFirstSelectedOnTab});
-
-  final bool isFirstSelectedOnTab;
+  const FloatingAddButton({super.key});
 
   @override
   State<FloatingAddButton> createState() => _FloatingAddButtonState();
@@ -31,7 +29,7 @@ class _FloatingAddButtonState extends State<FloatingAddButton> {
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: const Wrap(
             children: [
-              AddTodoScreen(),
+              AddTitleTodo(),
             ],
           ),
         );
@@ -41,22 +39,13 @@ class _FloatingAddButtonState extends State<FloatingAddButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          width: 5,
-          color: Theme.of(context).colorScheme.background,
-        ),
-      ),
-      child: FloatingActionButton(
-        shape: const CircleBorder(),
-        onPressed: widget.isFirstSelectedOnTab ? null : openPageAdd,
-        tooltip: 'Add What To Do',
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Colors.white,
-        child: const FaIcon(FontAwesomeIcons.plus),
-      ),
+    return FloatingActionButton(
+      shape: const CircleBorder(),
+      onPressed: openPageAdd,
+      tooltip: 'Add What To Do',
+      backgroundColor: Theme.of(context).colorScheme.primary,
+      foregroundColor: Colors.white,
+      child: const FaIcon(FontAwesomeIcons.plus),
     );
   }
 }

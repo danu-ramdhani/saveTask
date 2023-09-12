@@ -12,13 +12,13 @@ class OnSelectMenu extends StatelessWidget {
   final CollectionReference _products = FirebaseFirestore.instance
       .collection('users')
       .doc(firebase.currentUser!.uid)
-      .collection('todo-list');
+      .collection('todo-title');
 
   void _selectAll() async {
     FirebaseFirestore.instance.settings =
         const Settings(persistenceEnabled: true);
 
-    QuerySnapshot querySnapshot = await _products.get();
+    QuerySnapshot querySnapshot = await _products.doc().collection('todo-list').get();
 
     List<Future<void>> updateTasks = [];
 

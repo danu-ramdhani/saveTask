@@ -22,41 +22,43 @@ class _AccountScreenState extends State<AccountScreen> {
         actions: [
           ElevatedButton(
             onPressed: () async {
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
               try {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+                QuerySnapshot todoTitleSnapshot = await FirebaseFirestore
+                    .instance
+                    .collection('users')
+                    .doc(firebase.currentUser!.uid)
+                    .collection('todo-title')
+                    .get();
+
+                for (QueryDocumentSnapshot postSnapshot
+                    in todoTitleSnapshot.docs) {
+                  await postSnapshot.reference.delete();
+
+                  QuerySnapshot todoListSnapshot = await postSnapshot.reference
+                      .collection('todo-list')
+                      .get();
+                  for (QueryDocumentSnapshot todoSnapshot
+                      in todoListSnapshot.docs) {
+                    await todoSnapshot.reference.delete();
+                  }
+                }
+
                 await FirebaseFirestore.instance
                     .collection('users')
                     .doc(firebase.currentUser!.uid)
                     .delete();
 
-                QuerySnapshot todoSnapshot = await FirebaseFirestore.instance
-                    .collection('users')
-                    .doc(firebase.currentUser!.uid)
-                    .collection('todo-list')
-                    .get();
-
-                QuerySnapshot doneSnapshot = await FirebaseFirestore.instance
-                    .collection('users')
-                    .doc(firebase.currentUser!.uid)
-                    .collection('done-list')
-                    .get();
-
-                for (QueryDocumentSnapshot postSnapshot in todoSnapshot.docs) {
-                  await postSnapshot.reference.delete();
-                }
-
-                for (QueryDocumentSnapshot postSnapshot in doneSnapshot.docs) {
-                  await postSnapshot.reference.delete();
-                }
-
                 await firebase.currentUser!.delete();
-              } catch (e) {
-                // print("Error deleting user");
+                GoogleSignIn().signOut();
+                firebase.signOut();
+              } on FirebaseException catch (e) {
+                if (!context.mounted) return;
+                ScaffoldMessenger.of(context).clearSnackBars();
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text(e.toString())));
               }
-
-              GoogleSignIn().signOut();
-              firebase.signOut();
             },
             child: const Text('Yes'),
           ),
