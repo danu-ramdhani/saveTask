@@ -56,9 +56,6 @@ class _AddTodoScreenState extends State<AddTitleTodo> {
         'date': Timestamp.now(),
       });
     }
-
-    titleTx.clear();
-    todoTx.clear();
   }
 
   void _openPickDate() {
@@ -129,19 +126,17 @@ class _AddTodoScreenState extends State<AddTitleTodo> {
           TextFormField(
             controller: todoTx,
             maxLength: 70,
-            decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(0),
-              prefixIcon: Icon(
-                FontAwesomeIcons.circle,
-                color:
-                    Theme.of(context).colorScheme.onBackground.withOpacity(0.6),
+            decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(
+                vertical: 0,
+                horizontal: 0,
               ),
               counterText: '',
-              border: const OutlineInputBorder(borderSide: BorderSide.none),
+              border: OutlineInputBorder(borderSide: BorderSide.none),
               alignLabelWithHint: true,
-              labelText: 'todo',
+              labelText: 'todo...',
               floatingLabelBehavior: FloatingLabelBehavior.never,
-              labelStyle: const TextStyle(
+              labelStyle: TextStyle(
                 fontSize: 17,
               ),
             ),

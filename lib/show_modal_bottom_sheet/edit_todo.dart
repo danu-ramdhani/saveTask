@@ -111,19 +111,14 @@ class _EditTodoScreenState extends State<EditTodoScreen> {
           ),
           TextFormField(
             autofocus: true,
-            decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(0),
-              prefixIcon: Icon(
-                FontAwesomeIcons.circle,
-                color:
-                    Theme.of(context).colorScheme.onBackground.withOpacity(0.6),
-              ),
+            decoration: const InputDecoration(
+              contentPadding: EdgeInsets.all(0),
               counterText: '',
-              border: const OutlineInputBorder(borderSide: BorderSide.none),
+              border: OutlineInputBorder(borderSide: BorderSide.none),
               alignLabelWithHint: true,
               labelText: 'todo',
               floatingLabelBehavior: FloatingLabelBehavior.never,
-              labelStyle: const TextStyle(
+              labelStyle: TextStyle(
                 fontSize: 17,
               ),
             ),
